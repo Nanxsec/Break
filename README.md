@@ -4,7 +4,7 @@
 
 - Antes de utilizar o script, recomendo que use a wordlist de senhas que estou deixando aqui:<br>
 https://mega.nz/file/uyBB1Y6T#4SR_QrC6SPZJzuJ8_vHExe68RFJrVsrJAzkvrpnnur8 <br>
-- Após baixado, coloque ela no mesmo local onde o script está!<br><br><br>
+- Após baixado, coloque ela no mesmo local onde o script está!<br><br>
 
 - Tamanho da Wordlist: 229 milhões de senhas!
 
