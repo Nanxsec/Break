@@ -1,31 +1,18 @@
-<h1>
- - BREAK - SCRIPT PARA QUEBRA DE HASHES<br>
-</h1>
+# Sobre:
 
-- Antes de utilizar o script, recomendo que use a wordlist de senhas que estou deixando aqui:<br>
-https://mega.nz/file/uyBB1Y6T#4SR_QrC6SPZJzuJ8_vHExe68RFJrVsrJAzkvrpnnur8 <br>
-- Após baixado, coloque ela no mesmo local onde o script está!<br><br>
+Script para quebra de hashes do tipo: sha1, sha256, sha512, md5 e etc. O mesmo utiliza uma wordlist para fazer a quebra de senhas
 
-- Tamanho da Wordlist: 229 milhões de senhas!
+# Funcionalidade
 
-  <h3>
-  Como funciona?
-  </h3>
-- O script pega a hash que você passar para ele, abre a wordlist e verifica as senhas<br>
-  criptografando-as no mesmo tipo que a sua hash está! Ao encontrar a senha, ele descriptografa
-  e retorna a sua senha já quebrada!
+O script contém paralelismo para tornar mais eficaz a quebra dessas senhas, dessa forma não demorará muito!
 
-  <h3>
-  Funções:<br>
-  </h3>
+# Wordlist:
 
-  - Atualmente o script contém 2 funcionalidades que são:<br><br>
-  - 1) Você pode passar uma hash para tentar descriptografar<br>
-  - 2) Você pode passar um arquivo com algumas ou milhões de hashes para ele tentar descriptografar<br><br>
+Salve uma wordlist na mesma pasta do script com o nome de "senhas.txt" pode utilizar a rockyou.txt trocando o nome para "senhas.txt"
 
-  <h2>
-  Salvamento das hashes:<br>
-  </h2>
+# Como usar:
 
-  - O script após encontrar a sua hash, ele irá salvá-la dentro do arquivo de texto chamado Decrypted.txt<br>
-  - Dessa maneira, se tiver muita hash de uma vez, você não irá perder a sua senha!
+    git clone https://github.com/Nanxsec/Break
+    python3 Hash.py
+
+Após isso, coloque a sua hash e pronto, espere e veja se terá sucesso!
