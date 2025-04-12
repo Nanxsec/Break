@@ -38,7 +38,7 @@ if sys.version >= "3":
 
 def tentar_crack(hash_user, tipo_pego):
     try:
-        with open("/home/nano/Wordlists/rockyou.txt", "r", encoding="latin-1") as file:
+        with open("senhas.txt", "r", encoding="latin-1") as file:
             for c, x in enumerate(file):
                 palavra = x.strip().replace("\n","")
                 palavra_bytes = palavra.encode("utf-8")
