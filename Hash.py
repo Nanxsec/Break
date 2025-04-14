@@ -36,7 +36,7 @@ if sys.version >= "3":
 
 def worker(hash_user,hashed):
     with open("Decripted.txt", "a") as decrypted:
-        decrypted.write(f"{hash_user} : {palavra}\n")
+        decrypted.write(f"{hash_user}:{palavra}\n")
 
 
 def tentar_crack(hash_user, tipo_pego):
