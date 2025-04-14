@@ -15,11 +15,9 @@ else:
     os.system("cls")
 
 wordlist_hashes = []
-arquivo = False
 finds = False
 
 print("""\033[1;31m
-                                                 
  _____         _   ____                      _   
 |  |  |___ ___| |_|    \ ___ ___ ___ _ _ ___| |_ 
 |     | .'|_ -|   |  |  | -_|  _|  _| | | . |  _|
@@ -36,7 +34,13 @@ if sys.version >= "3":
     tipo_resu = json.loads(tipo_hash.text)
     tipo_pego = tipo_resu["algorithms"][0].lower()
 
+def worker(hash_user,hashed):
+    with open("Decripted.txt", "a") as decrypted:
+        decrypted.write(f"{hash_user} : {palavra}\n")
+
+
 def tentar_crack(hash_user, tipo_pego):
+    global palavra
     try:
         with open("senhas.txt", "r", encoding="latin-1") as file:
             for c, x in enumerate(file):
@@ -64,29 +68,23 @@ def tentar_crack(hash_user, tipo_pego):
                     hashed = func_map[tipo_pego](palavra_bytes).hexdigest()
                     if hashed == hash_user:
                         print(f"\n[{datetime.datetime.now().strftime('%H:%M:%S')}] \033[1;32m[*] Senha:\033[m \033[1m{palavra}\033[m")
+                        worker(hash_user, hashed)
+                        finds = True
                         return True
                     else:
-                        print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] \033[1;31m[-] Tentando senha:\033[m {palavra} --> {hash_user}\033[m")
+                        print(f"\033[1;33m[{datetime.datetime.now().strftime('%H:%M:%S')}]\033[m \033[31m[-] Senha testada:\033[m\033[1;2m {palavra} --> [{hash_user}]\033[m")
     except Exception as e:
         print(f"Erro ao processar: {e}")
     return False
 
-if arquivo:
-    def worker(hash_user):
-        tipo_hash = requests.get("https://hashes.com/en/api/identifier?hash={}".format(hash_user))
-        tipo_resu = json.loads(tipo_hash.text)
-        tipo_pego = tipo_resu["algorithms"][0].lower()
-        cracked = tentar_crack(hash_user, tipo_pego)
-        if cracked:
-            with open("Decripted.txt", "a") as decrypted:
-                decrypted.write(f"{hash_user} : {palavra}\n")
 
-    with ThreadPoolExecutor(max_workers=10) as executor:
+if __name__ == "__main__":
+    with ThreadPoolExecutor(max_workers=120) as executor:
         executor.map(worker, wordlist_hashes)
-else:
+
     if tentar_crack(hash_user, tipo_pego):
         fim2 = datetime.datetime.now() - start
         print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] \033[1;mTempo cracked -->\033[m \033[1;36m{fim2}\033[m\n")
         sys.exit()
-    else:
+    elif not finds:
         print(f"\n[{datetime.datetime.now().strftime('%H:%M:%S')}] \033[1m[ ! ]\033[m \033[1;31mHash não encontrada.\033[m")
